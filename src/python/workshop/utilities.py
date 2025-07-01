@@ -44,9 +44,7 @@ class Utilities:
 
         folder_path = Path(self.shared_files_path) / "files"
         folder_path.mkdir(parents=True, exist_ok=True)
-        file_path = folder_path / file_name
-
-        # Save the file using a synchronous context manager
+        file_path = folder_path / file_nameFunction
         with file_path.open("wb") as file:
             async for chunk in await agents_client.files.get_content(file_id):
                 file.write(chunk)
